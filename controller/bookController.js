@@ -30,6 +30,28 @@ exports.addBooks = async (req, res) => {
 
 exports.allbook = async (req, res) => {
     console.log("Inside bookslist")
+    const searchKey=req.query.search
+    console.log(req.query)
+    const query={
+        title:{$regex:searchKey,$options:"i"}
+    }
+
+    // res.send("userslist")
+    console.log(req.payload)
+    try {
+        const data = await books.find(query)
+        console.log(data)
+        res.status(200).json(data)
+
+    }
+    catch (err) {
+        res.status(401).json(err)
+    }
+ }
+
+ 
+exports.allbooksadmin = async (req, res) => {
+    console.log("Inside bookslist")
     // res.send("userslist")
     console.log(req.payload)
     try {
@@ -42,6 +64,7 @@ exports.allbook = async (req, res) => {
         res.status(401).json(err)
     }
  }
+
 
  exports.viewBook = async (req,res)=>{
     const {id}=req.params

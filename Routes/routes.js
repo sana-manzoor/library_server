@@ -23,10 +23,16 @@ const router=new express.Router()
 //define various paths
 router.post('/student/reg',studentController.register)
 router.post('/student/log',studentController.login)
+router.get('/get/:id',studentController.getUser)
+router.put('/std/edit/:id',multerConfig.single('profile'),studentController.editStudent)
+router.put('/getem',studentController.getEm)
+router.put('/changep/:id',studentController.changepass)
+
 
 // router.post('/food/add',jwtiddleware,multerConfig.single('cover'),bookController.addBooks)
 router.post('/book/add',jwtMiddleware,multerConfig.single('cover'),bookController.addBooks)
 router.get('/allbooks',bookController.allbook)
+router.get('/allbooksadm',bookController.allbooksadmin)
 router.get('/allstud',studentController.studentslist)
 router.get('/viewbook/:id',bookController.viewBook)
 router.delete('/deleteStudent/:id',jwtMiddleware,studentController.studentdel)

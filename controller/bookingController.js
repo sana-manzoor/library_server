@@ -40,6 +40,7 @@ exports.decrNumber = async (req, res) => {
         console.log(excistingBook)
         excistingBook.number--
         if (excistingBook.number > 0) {
+            // await excistingBook.save()
             // const result=await carts.findOneAndDelete({_id:cartId})
             const result = await books.findById({ _id: bookId })
             console.log(result)
@@ -57,6 +58,7 @@ exports.decrNumber = async (req, res) => {
     }
 
 }
+
 
 
 exports.incrNumber = async (req, res) => {

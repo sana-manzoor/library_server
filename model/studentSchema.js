@@ -36,6 +36,9 @@ const studSchema=new mongoose.Schema({
         require:true,
         default:false
    
+    },
+    profile:{
+        type:String
     }
 
 })
